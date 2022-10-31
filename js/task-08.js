@@ -6,14 +6,13 @@ form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
-    formData.forEach((value, name) => {
-        console.log("name", name);
-        console.log("value", value);
-        if (value === "") {
-            alert(message);
-        }
-    });
+    const {
+        elements: { email, password },
+         } = event.currentTarget;
+  if (email.value === "" || password.value === "") {
+    return alert("Усі поля мають бути заповненими!");
+  }
+  console.log({ Login: email.value, Password: password.value });
     
     form.reset();
 }
